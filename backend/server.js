@@ -1,7 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
 const port = process.env.port || 5000
-
+const{errorHandler} = require('./middleware/errorMiddleware')
 const app = express()
 //middlewear
 
@@ -13,4 +13,8 @@ app.use(express.urlencoded({extended: false}))
 app.use('/api/goals', require('./routes/goalRoutes'))
 // user resource
 // comments resources
+
+app.use(express.json)
+
+
     app.listen(port, ()=> {console.log(`server started on port ${port}`);})
